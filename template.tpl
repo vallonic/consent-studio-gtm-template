@@ -9,16 +9,20 @@ Google may provide), as modified from time to time.
 ___INFO___
 
 {
-  "type": "TAG",
-  "id": "cvt_temp_public_id",
-  "version": 1,
+  "displayName": "consent.studio CMP",
+  "description": "With consent.studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA.",
+  "categories": [
+    "TAG_MANAGEMENT",
+    "PERSONALIZATION"
+  ],
   "securityGroups": [],
-  "displayName": "consent.studio",
+  "id": "consent-studio",
+  "type": "TAG",
+  "version": 1,
   "brand": {
-    "id": "brand_dummy",
-    "displayName": ""
+    "id": "consent.studio"
+    "displayName": "consent.studio by Vallonic B.V.",
   },
-  "description": "",
   "containerContexts": [
     "WEB"
   ]
@@ -475,21 +479,7 @@ ___WEB_PERMISSIONS___
 
 ___TESTS___
 
-scenarios:
-- name: Untitled test 1
-  code: |-
-    const mockData = {
-      // Mocked field values
-    };
-
-    // Call runCode to run the template's code.
-    runCode(mockData);
-
-    // Verify that the tag finished successfully.
-    assertApi('gtmOnSuccess').wasCalled();
-- name: Quick Test
-  code: runCode();
-setup: ''
+scenarios: []
 
 
 ___NOTES___

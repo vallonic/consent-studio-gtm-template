@@ -10,17 +10,17 @@ ___INFO___
 
 {
   "displayName": "consent.studio CMP",
-  "description": "With consent.studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA.",
+  "description": "With consent.studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA. An account at https://consent.studio is required.",
   "categories": [
     "TAG_MANAGEMENT",
     "PERSONALIZATION"
   ],
   "securityGroups": [],
-  "id": "consent-studio",
+  "id": "consent_studio",
   "type": "TAG",
   "version": 1,
   "brand": {
-    "id": "consent.studio"
+    "id": "consent_studio"
     "displayName": "consent.studio by Vallonic B.V.",
   },
   "containerContexts": [
@@ -36,7 +36,6 @@ ___TEMPLATE_PARAMETERS___
 
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
-// Geef hier uw templatecode op.
 const log = require('logToConsole');
 const setDefaultConsentState = require('setDefaultConsentState');
 const injectScript = require('injectScript');
@@ -45,9 +44,6 @@ const getCookieValues = require('getCookieValues');
 const JSON = require('JSON');
 const isScanner = getUrl('fragment') == 'cs-scan';
 const updateConsentState = require('updateConsentState');
-
-
-log(getUrl('fragment'));
 
 if(! isScanner) { 
   setDefaultConsentState({
@@ -89,7 +85,7 @@ if(getCookieValues("consent-studio__storage").length && !isScanner)
 
 injectScript('https://consent.studio/' + getUrl('host') + '/banner.js');
 
-// Roep data.gtmOnSuccess aan wanneer de tag is voltooid.
+// Call data.gtmOnSuccess when completed
 data.gtmOnSuccess();
 
 
@@ -480,6 +476,7 @@ ___WEB_PERMISSIONS___
 ___TESTS___
 
 scenarios: []
+setup: ''
 
 
 ___NOTES___

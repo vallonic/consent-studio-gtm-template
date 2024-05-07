@@ -16,7 +16,7 @@ ___INFO___
     "PERSONALIZATION"
   ],
   "securityGroups": [],
-  "id": "consent_studio",
+  "id": "cvt_temp_public_id",
   "type": "TAG",
   "version": 1,
   "brand": {

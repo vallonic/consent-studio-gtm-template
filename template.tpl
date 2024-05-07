@@ -16,12 +16,12 @@ ___INFO___
     "PERSONALIZATION"
   ],
   "securityGroups": [],
-  "id": "cvt_temp_public_id",
+  "id": "consent_studio",
   "type": "TAG",
   "version": 1,
   "brand": {
-    "id": "consent_studio"
-    "displayName": "consent.studio by Vallonic B.V.",
+    "id": "consent_studio",
+    "displayName": "consent.studio by Vallonic B.V."
   },
   "containerContexts": [
     "WEB"
@@ -482,5 +482,4 @@ setup: ''
 ___NOTES___
 
 Created on 27/04/2024, 07:58:34
-
 

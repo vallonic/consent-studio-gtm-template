@@ -1,0 +1,5 @@
+homepage: "https://consent.studio"
+documentation: "https://vallonic.notion.site/consent-studio-ff0e7055c94841ce86b27d8bc0ac9593"
+versions:
+  - sha: 744f1284597c7d582ea8f4a213288542cef873f6
+    changeNotes: Initial release

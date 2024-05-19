@@ -2,7 +2,9 @@
 This is the repository of consent.studio's Google Tag Manager Community Tag Template.
 
 ## What is consent.studio?
-consent.studio is an affordable consent management platform (CMP) developed by the Dutch web development studio [Vallonic](https://vallonic.com). Key features are a cookie scanner, a consent management banner, a hosted overview of cookies used on a specific website, Google Consent Mode v2 implementation, multilanguage and 
+consent.studio is an affordable consent management platform (CMP) developed by the Dutch web development studio [Vallonic](https://vallonic.com). Key features are a cookie scanner, a consent management banner, a hosted overview of cookies used on a specific website, Google Consent Mode v2 implementation, multilanguage, multiple websites under one account and, most importantly, the competitive pricing.
+
+Website: https://consent.studio
 
 ### Examples:
 * https://vanvulpen.eu
@@ -33,4 +35,4 @@ Clients include Van Vulpen, Vereniging OMO, SOVOT, Danone, Naber Plastics and St
 ### Documentation
 Documentation is available on the following URL's:
 * 🇳🇱 (NL): https://vallonic.notion.site/consent-studio-ff0e7055c94841ce86b27d8bc0ac9593
-* 🇬🇧 (EN): to be released
+* 🇬🇧 (EN): https://vallonic.notion.site/consent-studio-f1749f7b6b1a406482f43634f81b2b5f

@@ -53,6 +53,7 @@ if(! isScanner) {
     'analytics_storage': 'denied',
     'functionality_storage': 'granted',
     'personalization_storage': 'granted',
+    'wait_for_update': 500,
   });
 } else {
   setDefaultConsentState({
@@ -62,6 +63,7 @@ if(! isScanner) {
     'analytics_storage': 'granted',
     'functionality_storage': 'granted',
     'personalization_storage': 'granted',
+    'wait_for_update': 500,
   });
 }
 

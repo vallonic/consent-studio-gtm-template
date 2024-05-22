@@ -17,6 +17,7 @@ Website: https://consent.studio
 Currently, we — Vallonic — are co-creating consent.studio with our own clients and befriended agencies. As we have reached the stage where our beta has gone public, we now offer a Google Tag Manager Community Template as opposed to manually importing a `.tpl` file.
 
 This is the roadmap for consent.studio:
+
 [x] Build and maintain a database of known cookies, in English
 [x] Develop a scanner feature that checks websites periodically scans websites for cookies and matches them agains known cookies from our cookie database
 [x] Develop a cookie banner that can easily be added to a website and works with Google Consent Mode v2
@@ -24,8 +25,8 @@ This is the roadmap for consent.studio:
 [x] Open up the application for existing customers of Vallonic and befriended agencies and partners
 [x] Open up the application to the public
 [ ] Add the Tag Template to the Community Gallery of Google Tag Manager
-[ ] Translate the documentation from Dutch to English
-[ ] Design, develop and launch a product website
+[x] Translate the documentation from Dutch to English
+[x] Design, develop and launch a product website
 
 ### Who are Vallonic?
 Vallonic designs, develops and maintains online experiences and software platforms for both enterprises as the Dutch educational landscape.

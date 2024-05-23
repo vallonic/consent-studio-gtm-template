@@ -1,5 +1,9 @@
 homepage: "https://consent.studio"
-documentation: "https://vallonic.notion.site/consent-studio-ff0e7055c94841ce86b27d8bc0ac9593"
+documentation: "https://vallonic.notion.site/consent-studio-f1749f7b6b1a406482f43634f81b2b5f"
 versions:
+  # 2. wait_for_update update
+  - sha: e7958ae11e61cfb053b91572481f6a8e6e5e64e6
+    changeNotes: Added the wait_for_update option to the setDefaultConsentState function call
+  # 1. Initial release
   - sha: 744f1284597c7d582ea8f4a213288542cef873f6
     changeNotes: Initial release

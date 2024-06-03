@@ -70,9 +70,16 @@ if(! isScanner) {
 if(getCookieValues("consent-studio__storage").length && !isScanner) 
 {
   var consent = JSON.parse(getCookieValues("consent-studio__storage")[0]);
-  var hasGivenConsentForFunctionalCookies = typeof consent.functional != 'undefined';
-  var hasGivenConsentForAnalyticsCookies = typeof consent.analytics != 'undefined';
-  var hasGivenConsentForMarketingCookies = typeof consent.marketing != 'undefined';
+
+  var hasGivenConsentForFunctionalCookies = false;
+  var hasGivenConsentForAnalyticsCookies = false;
+  var hasGivenConsentForMarketingCookies = false;
+  
+  for(let key in consent) {
+    hasGivenConsentForFunctionalCookies = hasGivenConsentForFunctionalCookies || consent[key] == 'functional';
+    hasGivenConsentForAnalyticsCookies = hasGivenConsentForAnalyticsCookies || consent[key] == 'analytics';
+    hasGivenConsentForMarketingCookies = hasGivenConsentForMarketingCookies || consent[key] == 'marketing';
+  }
     
   updateConsentState({
     'ad_storage': hasGivenConsentForMarketingCookies ? 'granted' : 'denied',

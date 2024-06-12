@@ -24,9 +24,12 @@ This is the roadmap for consent.studio:
 - [x] Develop a hosted overview of the cookies used on a website with the ability to update preferences
 - [x] Open up the application for existing customers of Vallonic and befriended agencies and partners
 - [x] Open up the application to the public
-- [ ] Add the Tag Template to the Community Gallery of Google Tag Manager
+- [x] Add the Tag Template to the Community Gallery of Google Tag Manager
 - [x] Translate the documentation from Dutch to English
 - [x] Design, develop and launch a product website
+- [x] The ability to translate all banner texts
+- [x] The ability to add a "reject all" button
+- [ ] The ability to set-up different rules per geographic region
 
 ### Who are Vallonic?
 Vallonic designs, develops and maintains online experiences and software platforms for both enterprises as the Dutch educational landscape.

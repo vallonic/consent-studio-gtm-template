@@ -45,6 +45,7 @@ const JSON = require('JSON');
 const isScanner = getUrl('fragment') == 'cs-scan';
 const updateConsentState = require('updateConsentState');
 
+
 if(! isScanner) { 
   setDefaultConsentState({
     'ad_storage': 'denied',
@@ -66,6 +67,10 @@ if(! isScanner) {
     'wait_for_update': 500,
   });
 }
+
+gtagSet({
+    'developer_id.dZTlmZj': true
+});
 
 if(getCookieValues("consent-studio__storage").length && !isScanner) 
 {
@@ -94,7 +99,6 @@ if(getCookieValues("consent-studio__storage").length && !isScanner)
 
 injectScript('https://consent.studio/' + getUrl('host') + '/banner.js');
 
-// Call data.gtmOnSuccess when completed
 data.gtmOnSuccess();
 
 

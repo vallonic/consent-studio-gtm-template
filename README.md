@@ -29,7 +29,9 @@ This is the roadmap for consent.studio:
 - [x] Design, develop and launch a product website
 - [x] The ability to translate all banner texts
 - [x] The ability to add a "reject all" button
-- [ ] The ability to set-up different rules per geographic region
+- [x] The ability to set-up different rules per geographic region
+- [ ] New, highly customizable banners
+- [ ] Digital accessible banners
 
 ### Who are Vallonic?
 Vallonic designs, develops and maintains online experiences and software platforms for both enterprises as the Dutch educational landscape.

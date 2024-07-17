@@ -10,7 +10,7 @@ ___INFO___
 
 {
   "displayName": "consent.studio CMP",
-  "description": "With consent.studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA. An account at https://consent.studio is required.",
+  "description": "With consent.studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA. An account on https://consent.studio is required.",
   "categories": [
     "TAG_MANAGEMENT",
     "PERSONALIZATION"
@@ -97,7 +97,7 @@ if(getCookieValues("consent-studio__storage").length && !isScanner)
   });
 }
 
-injectScript('https://consent.studio/' + getUrl('host') + '/banner.js');
+injectScript('https://my.consent.studio/' + getUrl('host') + '/banner.js');
 
 data.gtmOnSuccess();
 
@@ -410,7 +410,7 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://consent.studio/*/banner.js"
+                "string": "https://my.consent.studio/*/banner.js"
               }
             ]
           }

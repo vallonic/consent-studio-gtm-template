@@ -44,19 +44,9 @@ const getCookieValues = require('getCookieValues');
 const JSON = require('JSON');
 const isScanner = getUrl('fragment') == 'cs-scan';
 const updateConsentState = require('updateConsentState');
+const gtagSet = require('gtagSet');
 
-
-if(! isScanner) { 
-  setDefaultConsentState({
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'analytics_storage': 'denied',
-    'functionality_storage': 'granted',
-    'personalization_storage': 'granted',
-    'wait_for_update': 500,
-  });
-} else {
+if(isScanner) {
   setDefaultConsentState({
     'ad_storage': 'granted',
     'ad_user_data': 'granted',
@@ -72,28 +62,28 @@ gtagSet({
     'developer_id.dZTlmZj': true
 });
 
-if(getCookieValues("consent-studio__storage").length && !isScanner) 
+if(! isScanner) 
 {
   var consent = JSON.parse(getCookieValues("consent-studio__storage")[0]);
 
-  var hasGivenConsentForFunctionalCookies = false;
+  var hasGivenConsentForFunctionalCookies = true;
   var hasGivenConsentForAnalyticsCookies = false;
   var hasGivenConsentForMarketingCookies = false;
-  
+
   for(let key in consent) {
     hasGivenConsentForFunctionalCookies = hasGivenConsentForFunctionalCookies || consent[key] == 'functional';
     hasGivenConsentForAnalyticsCookies = hasGivenConsentForAnalyticsCookies || consent[key] == 'analytics';
     hasGivenConsentForMarketingCookies = hasGivenConsentForMarketingCookies || consent[key] == 'marketing';
   }
-    
-  updateConsentState({
+
+  setDefaultConsentState({
     'ad_storage': hasGivenConsentForMarketingCookies ? 'granted' : 'denied',
     'ad_user_data': hasGivenConsentForMarketingCookies ? 'granted' : 'denied',
     'ad_personalization': hasGivenConsentForMarketingCookies ? 'granted' : 'denied',
     'analytics_storage': hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied',
     'functionality_storage': hasGivenConsentForFunctionalCookies ? 'granted' : 'denied',
     'personalization_storage': hasGivenConsentForFunctionalCookies ? 'granted' : 'denied',
-    'security_storage': 'granted'
+    'security_storage': 'granted',
   });
 }
 

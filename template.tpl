@@ -9,7 +9,7 @@ Google may provide), as modified from time to time.
 ___INFO___
 
 {
-  "displayName": "consent.studio CMPx",
+  "displayName": "consent.studio CMP",
   "description": "With consent.studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA. An account at https://consent.studio is required.",
   "categories": [
     "TAG_MANAGEMENT",
@@ -25,7 +25,11 @@ ___INFO___
   },
   "containerContexts": [
     "WEB"
-  ]
+  ],
+  "price": "€6.95 per month or €69 per year",
+  "countries": "No limitations",
+  "freeTrial": "7 days free trial",
+  "homepageUrl": "https://consent.studio"
 }
 
 

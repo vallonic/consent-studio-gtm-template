@@ -9,8 +9,8 @@ Google may provide), as modified from time to time.
 ___INFO___
 
 {
-  "displayName": "consent.studio CMP",
-  "description": "With consent.studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA. An account on https://consent.studio is required.",
+  "displayName": "consent.studio CMPx",
+  "description": "With consent.studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA. An account at https://consent.studio is required.",
   "categories": [
     "TAG_MANAGEMENT",
     "PERSONALIZATION"
@@ -20,8 +20,8 @@ ___INFO___
   "type": "TAG",
   "version": 1,
   "brand": {
-    "id": "consent_studio",
-    "displayName": "consent.studio by Vallonic B.V."
+    "id": "github.com_vallonic",
+    "displayName": "vallonic"
   },
   "containerContexts": [
     "WEB"
@@ -89,6 +89,7 @@ if(! isScanner)
 
 injectScript('https://consent.studio/' + getUrl('host') + '/banner.js');
 
+// Call data.gtmOnSuccess when completed
 data.gtmOnSuccess();
 
 
@@ -241,37 +242,6 @@ ___WEB_PERMISSIONS___
                   {
                     "type": 1,
                     "string": "personalization_storage"
-                  },
-                  {
-                    "type": 8,
-                    "boolean": true
-                  },
-                  {
-                    "type": 8,
-                    "boolean": true
-                  }
-                ]
-              },
-              {
-                "type": 3,
-                "mapKey": [
-                  {
-                    "type": 1,
-                    "string": "consentType"
-                  },
-                  {
-                    "type": 1,
-                    "string": "read"
-                  },
-                  {
-                    "type": 1,
-                    "string": "write"
-                  }
-                ],
-                "mapValue": [
-                  {
-                    "type": 1,
-                    "string": "security_storage"
                   },
                   {
                     "type": 8,
@@ -472,6 +442,16 @@ ___WEB_PERMISSIONS___
       "isEditedByUser": true
     },
     "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "write_data_layer",
+        "versionId": "1"
+      },
+      "param": []
+    },
+    "isRequired": true
   }
 ]
 
@@ -485,4 +465,5 @@ setup: ''
 ___NOTES___
 
 Created on 27/04/2024, 07:58:34
+
 

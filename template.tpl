@@ -255,7 +255,9 @@ if(isScanner) {
 }
 
 gtagSet({
-    'developer_id.dZTlmZj': true
+  'developer_id.dZTlmZj': true,
+  'url_passthrough': data.consentModeUrlPassthrough,
+  'ads_data_redaction': data.consentModeAdsDataRedaction,
 });
 
 if(! isScanner) 

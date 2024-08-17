@@ -31,7 +31,203 @@ ___INFO___
 
 ___TEMPLATE_PARAMETERS___
 
-[]
+[
+  {
+    "type": "LABEL",
+    "name": "welcome",
+    "displayName": "Thank you for adding \u003ca href\u003d\"https://consent.studio/\"\u003econsent.studio\u003c/a\u003e to your GTM Container. Below, you will be able to override the default behavior of our tag and enable/disable certain features, such as data redaction with Google Ads. \u003cstrong\u003eThese settings are optional. consent.studio will function straight of the box.\u003c/strong\u003e\n\u003cbr /\u003e\u003cbr /\u003e\nFrom within this tag, you can override both the default consent signals for all site visitors or visitors that access your site from a specific region. This is different from the geotargeting rules that you can set-up from your consent.studio dashboard.\n\u003cbr /\u003e\u003cbr /\u003e\n\u003ca href\u003d\"https://consent.studio/app/\"\u003e» Open your consent.studio dashboard \u003c/a\u003e to manage translations, geotargeted banner behavior and styling."
+  },
+  {
+    "type": "GROUP",
+    "name": "consentMode",
+    "displayName": "Consent Mode Settings",
+    "groupStyle": "NO_ZIPPY",
+    "subParams": [
+      {
+        "type": "GROUP",
+        "name": "defaultConsentSignalsGroup",
+        "displayName": "Defaults",
+        "groupStyle": "ZIPPY_CLOSED",
+        "subParams": [
+          {
+            "type": "LABEL",
+            "name": "defaultConsentSignalsHint",
+            "displayName": "These default signals may be overridden by the default behavior and geotargeting rules configured in your consent.studio dashboard.\u003cbr /\u003e\u003cbr /\u003e"
+          },
+          {
+            "type": "RADIO",
+            "name": "consentModeDefaultConsentSignalFunctional",
+            "displayName": "Functional Cookies",
+            "radioItems": [
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              },
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              }
+            ],
+            "simpleValueType": true,
+            "defaultValue": "granted"
+          },
+          {
+            "type": "RADIO",
+            "name": "consentModeDefaultConsentSignalAnalytics",
+            "displayName": "Analytical Cookies",
+            "radioItems": [
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              },
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              }
+            ],
+            "simpleValueType": true,
+            "defaultValue": "denied"
+          },
+          {
+            "type": "RADIO",
+            "name": "consentModeDefaultConsentSignalMarketing",
+            "displayName": "Marketing Cookies",
+            "radioItems": [
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              },
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              }
+            ],
+            "simpleValueType": true,
+            "defaultValue": "denied"
+          }
+        ]
+      },
+      {
+        "type": "GROUP",
+        "name": "regionalConsentSignalsGroup",
+        "displayName": "Regional Defaults",
+        "groupStyle": "ZIPPY_CLOSED",
+        "subParams": [
+          {
+            "type": "LABEL",
+            "name": "regionalConsentSignalsHint",
+            "displayName": "These geotargeted default signals may be overridden by the default behavior and geotargeting rules configured in your consent.studio dashboard.\u003cbr /\u003e\u003cbr /\u003e"
+          },
+          {
+            "type": "PARAM_TABLE",
+            "name": "consentModeDefaultRegionalSignals",
+            "displayName": "Regional Default Consent Signals",
+            "paramTableColumns": [
+              {
+                "param": {
+                  "type": "TEXT",
+                  "name": "regionCode",
+                  "displayName": "Region Code",
+                  "simpleValueType": true,
+                  "valueHint": "US",
+                  "valueValidators": [
+                    {
+                      "type": "NON_EMPTY"
+                    }
+                  ],
+                  "clearOnCopy": false
+                },
+                "isUnique": true
+              },
+              {
+                "param": {
+                  "type": "RADIO",
+                  "name": "functional",
+                  "displayName": "Functional Cookies",
+                  "radioItems": [
+                    {
+                      "value": "granted",
+                      "displayValue": "Granted"
+                    },
+                    {
+                      "value": "denied",
+                      "displayValue": "Denied"
+                    }
+                  ],
+                  "simpleValueType": true,
+                  "defaultValue": "denied"
+                },
+                "isUnique": false
+              },
+              {
+                "param": {
+                  "type": "RADIO",
+                  "name": "analytics",
+                  "displayName": "Analytical Cookies",
+                  "radioItems": [
+                    {
+                      "value": "granted",
+                      "displayValue": "Granted"
+                    },
+                    {
+                      "value": "denied",
+                      "displayValue": "Denied"
+                    }
+                  ],
+                  "simpleValueType": true,
+                  "defaultValue": "denied"
+                },
+                "isUnique": false
+              },
+              {
+                "param": {
+                  "type": "RADIO",
+                  "name": "marketing",
+                  "displayName": "Marketing Cookies",
+                  "radioItems": [
+                    {
+                      "value": "granted",
+                      "displayValue": "Granted"
+                    },
+                    {
+                      "value": "denied",
+                      "displayValue": "Denied"
+                    }
+                  ],
+                  "simpleValueType": true,
+                  "defaultValue": "denied"
+                },
+                "isUnique": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "GROUP",
+        "name": "consentModeOtherGroup",
+        "displayName": "Other Consent Mode Settings",
+        "groupStyle": "ZIPPY_CLOSED",
+        "subParams": [
+          {
+            "type": "CHECKBOX",
+            "name": "consentModeAdsDataRedaction",
+            "checkboxText": "Enable Ads Data Redaction",
+            "simpleValueType": true,
+            "defaultValue": true
+          },
+          {
+            "type": "CHECKBOX",
+            "name": "consentModeUrlPassthrough",
+            "checkboxText": "Enable URL Passtrough",
+            "simpleValueType": true,
+            "defaultValue": true
+          }
+        ]
+      }
+    ]
+  }
+]
 
 
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___

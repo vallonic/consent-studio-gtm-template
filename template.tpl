@@ -9,7 +9,7 @@ Google may provide), as modified from time to time.
 ___INFO___
 
 {
-  "displayName": "consent.studio CMPx",
+  "displayName": "consent.studio CMP",
   "description": "With consent.studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA. An account at https://consent.studio is required.",
   "categories": [
     "TAG_MANAGEMENT",
@@ -31,7 +31,203 @@ ___INFO___
 
 ___TEMPLATE_PARAMETERS___
 
-[]
+[
+  {
+    "type": "LABEL",
+    "name": "welcome",
+    "displayName": "Thank you for adding \u003ca href\u003d\"https://consent.studio/\"\u003econsent.studio\u003c/a\u003e to your GTM Container. Below, you will be able to override the default behavior of our tag and enable/disable certain features, such as data redaction with Google Ads. \u003cstrong\u003eThese settings are optional. consent.studio will function straight of the box.\u003c/strong\u003e\n\u003cbr /\u003e\u003cbr /\u003e\nFrom within this tag, you can override both the default consent signals for all site visitors or visitors that access your site from a specific region. This is different from the geotargeting rules that you can set-up from your consent.studio dashboard.\n\u003cbr /\u003e\u003cbr /\u003e\n\u003ca href\u003d\"https://consent.studio/app/\"\u003e» Open your consent.studio dashboard \u003c/a\u003e to manage translations, geotargeted banner behavior and styling."
+  },
+  {
+    "type": "GROUP",
+    "name": "consentMode",
+    "displayName": "Consent Mode Settings",
+    "groupStyle": "NO_ZIPPY",
+    "subParams": [
+      {
+        "type": "GROUP",
+        "name": "defaultConsentSignalsGroup",
+        "displayName": "Defaults",
+        "groupStyle": "ZIPPY_CLOSED",
+        "subParams": [
+          {
+            "type": "LABEL",
+            "name": "defaultConsentSignalsHint",
+            "displayName": "These default signals may be overridden by the default behavior and geotargeting rules configured in your consent.studio dashboard.\u003cbr /\u003e\u003cbr /\u003e"
+          },
+          {
+            "type": "RADIO",
+            "name": "consentModeDefaultConsentSignalFunctional",
+            "displayName": "Functional Cookies",
+            "radioItems": [
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              },
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              }
+            ],
+            "simpleValueType": true,
+            "defaultValue": "granted"
+          },
+          {
+            "type": "RADIO",
+            "name": "consentModeDefaultConsentSignalAnalytics",
+            "displayName": "Analytical Cookies",
+            "radioItems": [
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              },
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              }
+            ],
+            "simpleValueType": true,
+            "defaultValue": "denied"
+          },
+          {
+            "type": "RADIO",
+            "name": "consentModeDefaultConsentSignalMarketing",
+            "displayName": "Marketing Cookies",
+            "radioItems": [
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              },
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              }
+            ],
+            "simpleValueType": true,
+            "defaultValue": "denied"
+          }
+        ]
+      },
+      {
+        "type": "GROUP",
+        "name": "regionalConsentSignalsGroup",
+        "displayName": "Regional Defaults",
+        "groupStyle": "ZIPPY_CLOSED",
+        "subParams": [
+          {
+            "type": "LABEL",
+            "name": "regionalConsentSignalsHint",
+            "displayName": "These geotargeted default signals may be overridden by the default behavior and geotargeting rules configured in your consent.studio dashboard.\u003cbr /\u003e\u003cbr /\u003e"
+          },
+          {
+            "type": "PARAM_TABLE",
+            "name": "consentModeDefaultRegionalSignals",
+            "displayName": "Regional Default Consent Signals",
+            "paramTableColumns": [
+              {
+                "param": {
+                  "type": "TEXT",
+                  "name": "regionCode",
+                  "displayName": "Region Code",
+                  "simpleValueType": true,
+                  "valueHint": "US",
+                  "valueValidators": [
+                    {
+                      "type": "NON_EMPTY"
+                    }
+                  ],
+                  "clearOnCopy": false
+                },
+                "isUnique": true
+              },
+              {
+                "param": {
+                  "type": "RADIO",
+                  "name": "functional",
+                  "displayName": "Functional Cookies",
+                  "radioItems": [
+                    {
+                      "value": "granted",
+                      "displayValue": "Granted"
+                    },
+                    {
+                      "value": "denied",
+                      "displayValue": "Denied"
+                    }
+                  ],
+                  "simpleValueType": true,
+                  "defaultValue": "denied"
+                },
+                "isUnique": false
+              },
+              {
+                "param": {
+                  "type": "RADIO",
+                  "name": "analytics",
+                  "displayName": "Analytical Cookies",
+                  "radioItems": [
+                    {
+                      "value": "granted",
+                      "displayValue": "Granted"
+                    },
+                    {
+                      "value": "denied",
+                      "displayValue": "Denied"
+                    }
+                  ],
+                  "simpleValueType": true,
+                  "defaultValue": "denied"
+                },
+                "isUnique": false
+              },
+              {
+                "param": {
+                  "type": "RADIO",
+                  "name": "marketing",
+                  "displayName": "Marketing Cookies",
+                  "radioItems": [
+                    {
+                      "value": "granted",
+                      "displayValue": "Granted"
+                    },
+                    {
+                      "value": "denied",
+                      "displayValue": "Denied"
+                    }
+                  ],
+                  "simpleValueType": true,
+                  "defaultValue": "denied"
+                },
+                "isUnique": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "GROUP",
+        "name": "consentModeOtherGroup",
+        "displayName": "Other Consent Mode Settings",
+        "groupStyle": "ZIPPY_CLOSED",
+        "subParams": [
+          {
+            "type": "CHECKBOX",
+            "name": "consentModeAdsDataRedaction",
+            "checkboxText": "Enable Ads Data Redaction",
+            "simpleValueType": true,
+            "defaultValue": true
+          },
+          {
+            "type": "CHECKBOX",
+            "name": "consentModeUrlPassthrough",
+            "checkboxText": "Enable URL Passtrough",
+            "simpleValueType": true,
+            "defaultValue": true
+          }
+        ]
+      }
+    ]
+  }
+]
 
 
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
@@ -59,31 +255,59 @@ if(isScanner) {
 }
 
 gtagSet({
-    'developer_id.dZTlmZj': true
+  'developer_id.dZTlmZj': true,
+  'url_passthrough': data.consentModeUrlPassthrough,
+  'ads_data_redaction': data.consentModeAdsDataRedaction,
 });
 
 if(! isScanner) 
-{
-  var consent = JSON.parse(getCookieValues("consent-studio__storage")[0]);
+{ 
+  var hasGivenConsentForFunctionalCookies = null;
+  var hasGivenConsentForAnalyticsCookies = null;
+  var hasGivenConsentForMarketingCookies = null;
+  
+  var consent = JSON.parse(getCookieValues("consent-studio__storage")[0] ? getCookieValues("consent-studio__storage")[0] : '{}');
 
-  var hasGivenConsentForFunctionalCookies = true;
-  var hasGivenConsentForAnalyticsCookies = false;
-  var hasGivenConsentForMarketingCookies = false;
+  if(getCookieValues("consent-studio__storage")[0]) 
+  {
+    hasGivenConsentForFunctionalCookies = false;
+    hasGivenConsentForAnalyticsCookies = false;
+    hasGivenConsentForMarketingCookies = false;
 
-  for(let key in consent) {
-    hasGivenConsentForFunctionalCookies = hasGivenConsentForFunctionalCookies || consent[key] == 'functional';
-    hasGivenConsentForAnalyticsCookies = hasGivenConsentForAnalyticsCookies || consent[key] == 'analytics';
-    hasGivenConsentForMarketingCookies = hasGivenConsentForMarketingCookies || consent[key] == 'marketing';
+    if(consent.length > 0) {
+      for(let key in consent) {
+        hasGivenConsentForFunctionalCookies = hasGivenConsentForFunctionalCookies || consent[key] == 'functional';
+        hasGivenConsentForAnalyticsCookies = hasGivenConsentForAnalyticsCookies || consent[key] == 'analytics';
+        hasGivenConsentForMarketingCookies = hasGivenConsentForMarketingCookies || consent[key] == 'marketing';
+      }
+    }
   }
-
+  
+  if(data.regionSpecificDefaultConsent) 
+  {
+    for (const region of data.consentModeDefaultRegionalSignals) 
+    {
+      setDefaultConsentState({
+        'ad_storage': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : region.marketing,
+        'ad_user_data': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : region.marketing,
+        'ad_personalization': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : region.marketing,
+        'analytics_storage': hasGivenConsentForAnalyticsCookies !== null ? (hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied') : region.analytics,
+        'functionality_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : region.functional,
+        'personalization_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : region.functional,
+        'region': [region.regionCode],
+        'wait_for_update': 1000,
+      });
+    }
+  }
+  
   setDefaultConsentState({
-    'ad_storage': hasGivenConsentForMarketingCookies ? 'granted' : 'denied',
-    'ad_user_data': hasGivenConsentForMarketingCookies ? 'granted' : 'denied',
-    'ad_personalization': hasGivenConsentForMarketingCookies ? 'granted' : 'denied',
-    'analytics_storage': hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied',
-    'functionality_storage': hasGivenConsentForFunctionalCookies ? 'granted' : 'denied',
-    'personalization_storage': hasGivenConsentForFunctionalCookies ? 'granted' : 'denied',
-    'security_storage': 'granted',
+    'ad_storage': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
+    'ad_user_data': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
+    'ad_personalization': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
+    'analytics_storage': hasGivenConsentForAnalyticsCookies !== null ? (hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalAnalytics || 'denied'),
+    'functionality_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
+    'personalization_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
+    'wait_for_update': 1000,
   });
 }
 

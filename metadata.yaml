@@ -1,6 +1,9 @@
 homepage: "https://consent.studio"
 documentation: "https://vallonic.notion.site/consent-studio-f1749f7b6b1a406482f43634f81b2b5f"
 versions:
+  # 9. New settings
+  - sha: f736ce1d652b92a1e152beb37e095db60ea052fb
+    changeNotes: Introduced new settings for default consent signals, ads data redaction and URL passtrough.
   # 8. Will no longer update the security_storage consent type; added permission request for dataLayer write access
   - sha: ed1aab58f3581ddaf00f152e08bed50779600681 
     changeNotes: Will no longer update the security_storage consent type; added permission request for dataLayer write access

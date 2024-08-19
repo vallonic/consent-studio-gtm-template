@@ -1,6 +1,9 @@
 homepage: "https://consent.studio"
 documentation: "https://vallonic.notion.site/consent-studio-f1749f7b6b1a406482f43634f81b2b5f"
 versions:
+  # 10. Permissions for writing to the dataLayer
+  - sha: 113ba7ae8a30d04a93836ac1df84e2b183c2f169
+    changeNotes: Adjusted permission requests to write the relevant keys to the dataLayer.
   # 9. New settings
   - sha: f736ce1d652b92a1e152beb37e095db60ea052fb
     changeNotes: Introduced new settings for default consent signals, ads data redaction and URL passtrough.

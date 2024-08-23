@@ -686,7 +686,31 @@ ___WEB_PERMISSIONS___
         "publicId": "write_data_layer",
         "versionId": "1"
       },
-      "param": []
+      "param": [
+        {
+          "key": "keyPatterns",
+          "value": {
+            "type": 2,
+            "listItem": [
+              {
+                "type": 1,
+                "string": "developer_id.dZTlmZj"
+              },
+              {
+                "type": 1,
+                "string": "url_passthrough"
+              },
+              {
+                "type": 1,
+                "string": "ads_data_redaction"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
     },
     "isRequired": true
   }

@@ -265,8 +265,9 @@ if(! isScanner)
   var hasGivenConsentForFunctionalCookies = null;
   var hasGivenConsentForAnalyticsCookies = null;
   var hasGivenConsentForMarketingCookies = null;
-  
-  var consent = JSON.parse(getCookieValues("consent-studio__storage")[0] ? getCookieValues("consent-studio__storage")[0] : '{}');
+
+  var consentString = getCookieValues("consent-studio__storage")[0] || null;
+  var consent = JSON.parse(consentString ? consentString : '{}');
 
   if(getCookieValues("consent-studio__storage")[0]) 
   {
@@ -285,15 +286,15 @@ if(! isScanner)
   
   if(data.regionSpecificDefaultConsent) 
   {
-    for (const region of data.consentModeDefaultRegionalSignals) 
+    for(const region of data.consentModeDefaultRegionalSignals) 
     {
       setDefaultConsentState({
-        'ad_storage': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : region.marketing,
-        'ad_user_data': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : region.marketing,
-        'ad_personalization': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : region.marketing,
-        'analytics_storage': hasGivenConsentForAnalyticsCookies !== null ? (hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied') : region.analytics,
-        'functionality_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : region.functional,
-        'personalization_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : region.functional,
+        'ad_storage': region.marketing,
+        'ad_user_data': region.marketing,
+        'ad_personalization': region.marketing,
+        'analytics_storage': region.analytics,
+        'functionality_storage': region.functional,
+        'personalization_storage': region.functional,
         'region': [region.regionCode],
         'wait_for_update': 1000,
       });
@@ -301,14 +302,26 @@ if(! isScanner)
   }
   
   setDefaultConsentState({
-    'ad_storage': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
-    'ad_user_data': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
-    'ad_personalization': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
-    'analytics_storage': hasGivenConsentForAnalyticsCookies !== null ? (hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalAnalytics || 'denied'),
-    'functionality_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
-    'personalization_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
+    'ad_storage': data.consentModeDefaultConsentSignalMarketing || 'denied',
+    'ad_user_data': data.consentModeDefaultConsentSignalMarketing || 'denied',
+    'ad_personalization': data.consentModeDefaultConsentSignalMarketing || 'denied',
+    'analytics_storage': data.consentModeDefaultConsentSignalAnalytics || 'denied',
+    'functionality_storage': data.consentModeDefaultConsentSignalFunctional || 'denied',
+    'personalization_storage': data.consentModeDefaultConsentSignalFunctional || 'denied',
     'wait_for_update': 1000,
   });
+
+  if(consentString) 
+  {
+    updateConsentState({
+      'ad_storage': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
+      'ad_user_data': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
+      'ad_personalization': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
+      'analytics_storage': hasGivenConsentForAnalyticsCookies !== null ? (hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalAnalytics || 'denied'),
+      'functionality_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
+      'personalization_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
+    });
+  }
 }
 
 injectScript('https://consent.studio/' + getUrl('host') + '/banner.js');

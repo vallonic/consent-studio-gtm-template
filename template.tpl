@@ -250,6 +250,7 @@ if(isScanner) {
     'analytics_storage': 'granted',
     'functionality_storage': 'granted',
     'personalization_storage': 'granted',
+    'security_storage': 'granted',
     'wait_for_update': 500,
   });
 }
@@ -295,6 +296,7 @@ if(! isScanner)
         'analytics_storage': region.analytics,
         'functionality_storage': region.functional,
         'personalization_storage': region.functional,
+        'security_storage': 'granted',
         'region': [region.regionCode],
         'wait_for_update': 1000,
       });
@@ -308,6 +310,7 @@ if(! isScanner)
     'analytics_storage': data.consentModeDefaultConsentSignalAnalytics || 'denied',
     'functionality_storage': data.consentModeDefaultConsentSignalFunctional || 'denied',
     'personalization_storage': data.consentModeDefaultConsentSignalFunctional || 'denied',
+    'security_storage': 'granted',
     'wait_for_update': 1000,
   });
 
@@ -320,6 +323,7 @@ if(! isScanner)
       'analytics_storage': hasGivenConsentForAnalyticsCookies !== null ? (hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalAnalytics || 'denied'),
       'functionality_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
       'personalization_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
+      'security_storage': 'granted',
     });
   }
 }
@@ -572,6 +576,37 @@ ___WEB_PERMISSIONS___
                   {
                     "type": 1,
                     "string": "ad_personalization"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "consentType"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "security_storage"
                   },
                   {
                     "type": 8,

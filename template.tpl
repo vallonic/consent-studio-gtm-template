@@ -35,7 +35,7 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "LABEL",
     "name": "welcome",
-    "displayName": "Thank you for adding \u003ca href\u003d\"https://consent.studio/\"\u003econsent.studio\u003c/a\u003e to your GTM Container. Below, you will be able to override the default behavior of our tag and enable/disable certain features, such as data redaction with Google Ads. \u003cstrong\u003eThese settings are optional. consent.studio will function straight of the box.\u003c/strong\u003e\n\u003cbr /\u003e\u003cbr /\u003e\nFrom within this tag, you can override both the default consent signals for all site visitors or visitors that access your site from a specific region. This is different from the geotargeting rules that you can set-up from your consent.studio dashboard.\n\u003cbr /\u003e\u003cbr /\u003e\n\u003ca href\u003d\"https://consent.studio/app/\"\u003e» Open your consent.studio dashboard \u003c/a\u003e to manage translations, geotargeted banner behavior and styling."
+    "displayName": "Thank you for adding \u003ca href\u003d\"https://consent.studio/\" target\u003d\"_blank\"\u003econsent.studio\u003c/a\u003e to your GTM Container. Below, you will be able to override the default behavior of our tag and enable/disable certain features, such as data redaction with Google Ads. \u003cstrong\u003eThese settings are optional. consent.studio will function straight of the box.\u003c/strong\u003e\n\u003cbr /\u003e\u003cbr /\u003e\nFrom within this tag, you can override both the default consent signals for all site visitors or visitors that access your site from a specific region. This is different from the geotargeting rules that you can set-up from your consent.studio dashboard.\n\u003cbr /\u003e\u003cbr /\u003e\n\u003ca href\u003d\"https://consent.studio/app/\" target\u003d\"_blank\"\u003e» Open your consent.studio dashboard\u003c/a\u003e to manage translations, geotargeted banner behavior and styling."
   },
   {
     "type": "GROUP",
@@ -250,6 +250,7 @@ if(isScanner) {
     'analytics_storage': 'granted',
     'functionality_storage': 'granted',
     'personalization_storage': 'granted',
+    'security_storage': 'granted',
     'wait_for_update': 500,
   });
 }
@@ -265,8 +266,9 @@ if(! isScanner)
   var hasGivenConsentForFunctionalCookies = null;
   var hasGivenConsentForAnalyticsCookies = null;
   var hasGivenConsentForMarketingCookies = null;
-  
-  var consent = JSON.parse(getCookieValues("consent-studio__storage")[0] ? getCookieValues("consent-studio__storage")[0] : '{}');
+
+  var consentString = getCookieValues("consent-studio__storage")[0] || null;
+  var consent = JSON.parse(consentString ? consentString : '{}');
 
   if(getCookieValues("consent-studio__storage")[0]) 
   {
@@ -285,15 +287,16 @@ if(! isScanner)
   
   if(data.regionSpecificDefaultConsent) 
   {
-    for (const region of data.consentModeDefaultRegionalSignals) 
+    for(const region of data.consentModeDefaultRegionalSignals) 
     {
       setDefaultConsentState({
-        'ad_storage': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : region.marketing,
-        'ad_user_data': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : region.marketing,
-        'ad_personalization': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : region.marketing,
-        'analytics_storage': hasGivenConsentForAnalyticsCookies !== null ? (hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied') : region.analytics,
-        'functionality_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : region.functional,
-        'personalization_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : region.functional,
+        'ad_storage': region.marketing,
+        'ad_user_data': region.marketing,
+        'ad_personalization': region.marketing,
+        'analytics_storage': region.analytics,
+        'functionality_storage': region.functional,
+        'personalization_storage': region.functional,
+        'security_storage': 'granted',
         'region': [region.regionCode],
         'wait_for_update': 1000,
       });
@@ -301,14 +304,28 @@ if(! isScanner)
   }
   
   setDefaultConsentState({
-    'ad_storage': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
-    'ad_user_data': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
-    'ad_personalization': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
-    'analytics_storage': hasGivenConsentForAnalyticsCookies !== null ? (hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalAnalytics || 'denied'),
-    'functionality_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
-    'personalization_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
+    'ad_storage': data.consentModeDefaultConsentSignalMarketing || 'denied',
+    'ad_user_data': data.consentModeDefaultConsentSignalMarketing || 'denied',
+    'ad_personalization': data.consentModeDefaultConsentSignalMarketing || 'denied',
+    'analytics_storage': data.consentModeDefaultConsentSignalAnalytics || 'denied',
+    'functionality_storage': data.consentModeDefaultConsentSignalFunctional || 'denied',
+    'personalization_storage': data.consentModeDefaultConsentSignalFunctional || 'denied',
+    'security_storage': 'granted',
     'wait_for_update': 1000,
   });
+
+  if(consentString) 
+  {
+    updateConsentState({
+      'ad_storage': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
+      'ad_user_data': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
+      'ad_personalization': hasGivenConsentForMarketingCookies !== null ? (hasGivenConsentForMarketingCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalMarketing || 'denied'),
+      'analytics_storage': hasGivenConsentForAnalyticsCookies !== null ? (hasGivenConsentForAnalyticsCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalAnalytics || 'denied'),
+      'functionality_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
+      'personalization_storage': hasGivenConsentForFunctionalCookies !== null ? (hasGivenConsentForFunctionalCookies ? 'granted' : 'denied') : (data.consentModeDefaultConsentSignalFunctional || 'denied'),
+      'security_storage': 'granted',
+    });
+  }
 }
 
 injectScript('https://consent.studio/' + getUrl('host') + '/banner.js');
@@ -559,6 +576,37 @@ ___WEB_PERMISSIONS___
                   {
                     "type": 1,
                     "string": "ad_personalization"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "consentType"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "security_storage"
                   },
                   {
                     "type": 8,

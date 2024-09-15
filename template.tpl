@@ -39,8 +39,32 @@ ___TEMPLATE_PARAMETERS___
   },
   {
     "type": "GROUP",
+    "name": "generalSettings",
+    "displayName": "General Settings",
+    "groupStyle": "NO_ZIPPY",
+    "subParams": [
+      {
+        "type": "RADIO",
+        "name": "enableConsentMode",
+        "displayName": "Enable Google Consent Mode (v2)",
+        "radioItems": [
+          {
+            "value": "yes",
+            "displayValue": "Yes"
+          },
+          {
+            "value": "no",
+            "displayValue": "No"
+          }
+        ],
+        "simpleValueType": true
+      }
+    ]
+  },
+  {
+    "type": "GROUP",
     "name": "consentMode",
-    "displayName": "Consent Mode Settings",
+    "displayName": "Google Consent Mode Settings",
     "groupStyle": "NO_ZIPPY",
     "subParams": [
       {
@@ -225,12 +249,44 @@ ___TEMPLATE_PARAMETERS___
           }
         ]
       }
+    ],
+    "enablingConditions": [
+      {
+        "paramName": "enableConsentMode",
+        "paramValue": "yes",
+        "type": "EQUALS"
+      }
     ]
   }
 ]
 
 
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
+
+/*
+|--------------------------------------------------------------------------
+| Official consent.studio GTM Template
+|--------------------------------------------------------------------------
+|
+| consent.studio is a Consent Management Platform, developed by 
+| Vallonic B.V. (https://vallonic.com) from the Netherlands.
+|
+| Support methods: 
+| 1. Log in to your consent.studio account on https://consent.studio/app
+|   and use the live chat, in the right bottom corner of your screen;
+| 2. E-mail support@consent.studio
+|
+| Support is available in both Dutch (NL) and English (EN).
+|
+| Please read our documentation first on https://consent.studio/docs/nl or
+| https://consent.studio/docs/en.
+|
+| By using this GTM Template, you agree to the following:
+| - consent.studio Terms & Conditions (https://consent.studio/terms)
+| - consent.studio Privacy Policy (https://consent.studio/privacy)
+| - consent.studio Disclaimer (https://consent.studio/disclaimer)
+|
+*/
 
 const log = require('logToConsole');
 const setDefaultConsentState = require('setDefaultConsentState');
@@ -241,8 +297,10 @@ const JSON = require('JSON');
 const isScanner = getUrl('fragment') == 'cs-scan';
 const updateConsentState = require('updateConsentState');
 const gtagSet = require('gtagSet');
+const setInWindow = require('setInWindow');
 
-if(isScanner) {
+if(isScanner) 
+{
   setDefaultConsentState({
     'ad_storage': 'granted',
     'ad_user_data': 'granted',
@@ -261,8 +319,11 @@ gtagSet({
   'ads_data_redaction': data.consentModeAdsDataRedaction,
 });
 
-if(! isScanner) 
-{ 
+var enableGoogleConsentMode = data.enableConsentMode !== 'no';
+setInWindow('consentStudioActivateGoogleConsentMode', enableGoogleConsentMode);
+
+if(! isScanner && enableGoogleConsentMode)
+{
   var hasGivenConsentForFunctionalCookies = null;
   var hasGivenConsentForAnalyticsCookies = null;
   var hasGivenConsentForMarketingCookies = null;
@@ -738,6 +799,67 @@ ___WEB_PERMISSIONS___
               {
                 "type": 1,
                 "string": "ads_data_redaction"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "access_globals",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "keys",
+          "value": {
+            "type": 2,
+            "listItem": [
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "consentStudioActivateGoogleConsentMode"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  }
+                ]
               }
             ]
           }

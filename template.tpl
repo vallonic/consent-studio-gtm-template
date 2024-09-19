@@ -9,8 +9,8 @@ Google may provide), as modified from time to time.
 ___INFO___
 
 {
-  "displayName": "consent.studio CMP",
-  "description": "With consent.studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA. An account at https://consent.studio is required.",
+  "displayName": "Consent Studio CMP",
+  "description": "With Consent Studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA. An account at https://consent.studio is required.",
   "categories": [
     "TAG_MANAGEMENT",
     "PERSONALIZATION"
@@ -35,7 +35,7 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "LABEL",
     "name": "welcome",
-    "displayName": "Thank you for adding \u003ca href\u003d\"https://consent.studio/\" target\u003d\"_blank\"\u003econsent.studio\u003c/a\u003e to your GTM Container. Below, you will be able to override the default behavior of our tag and enable/disable certain features, such as data redaction with Google Ads. \u003cstrong\u003eThese settings are optional. consent.studio will function straight of the box.\u003c/strong\u003e\n\u003cbr /\u003e\u003cbr /\u003e\nFrom within this tag, you can override both the default consent signals for all site visitors or visitors that access your site from a specific region. This is different from the geotargeting rules that you can set-up from your consent.studio dashboard.\n\u003cbr /\u003e\u003cbr /\u003e\n\u003ca href\u003d\"https://consent.studio/app/\" target\u003d\"_blank\"\u003e» Open your consent.studio dashboard\u003c/a\u003e to manage translations, geotargeted banner behavior and styling."
+    "displayName": "Thank you for adding \u003ca href\u003d\"https://consent.studio/\" target\u003d\"_blank\"\u003eConsent Studio\u003c/a\u003e to your GTM Container. Below, you will be able to override the default behavior of our tag and enable/disable certain features, such as data redaction with Google Ads. \u003cstrong\u003eThese settings are optional. Consent Studio will function straight of the box.\u003c/strong\u003e\n\u003cbr /\u003e\u003cbr /\u003e\nFrom within this tag, you can override both the default consent signals for all site visitors or visitors that access your site from a specific region. This is different from the geotargeting rules that you can set-up from your Consent Studio dashboard.\n\u003cbr /\u003e\u003cbr /\u003e\n\u003ca href\u003d\"https://consent.studio/app/\" target\u003d\"_blank\"\u003e» Open your Consent Studio dashboard\u003c/a\u003e to manage translations, geotargeted banner behavior and styling."
   },
   {
     "type": "GROUP",
@@ -76,7 +76,7 @@ ___TEMPLATE_PARAMETERS___
           {
             "type": "LABEL",
             "name": "defaultConsentSignalsHint",
-            "displayName": "These default signals may be overridden by the default behavior and geotargeting rules configured in your consent.studio dashboard.\u003cbr /\u003e\u003cbr /\u003e"
+            "displayName": "These default signals may be overridden by the default behavior and geotargeting rules configured in your Consent Studio dashboard.\u003cbr /\u003e\u003cbr /\u003e"
           },
           {
             "type": "RADIO",
@@ -140,7 +140,7 @@ ___TEMPLATE_PARAMETERS___
           {
             "type": "LABEL",
             "name": "regionalConsentSignalsHint",
-            "displayName": "These geotargeted default signals may be overridden by the default behavior and geotargeting rules configured in your consent.studio dashboard.\u003cbr /\u003e\u003cbr /\u003e"
+            "displayName": "These geotargeted default signals may be overridden by the default behavior and geotargeting rules configured in your Consent Studio dashboard.\u003cbr /\u003e\u003cbr /\u003e"
           },
           {
             "type": "PARAM_TABLE",
@@ -265,14 +265,14 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
 /*
 |--------------------------------------------------------------------------
-| Official consent.studio GTM Template
+| Official Consent Studio GTM Template
 |--------------------------------------------------------------------------
 |
-| consent.studio is a Consent Management Platform, developed by 
+| Consent Studio is a Consent Management Platform, developed by 
 | Vallonic B.V. (https://vallonic.com) from the Netherlands.
 |
 | Support methods: 
-| 1. Log in to your consent.studio account on https://consent.studio/app
+| 1. Log in to your Consent Studio account on https://consent.studio/app
 |   and use the live chat, in the right bottom corner of your screen;
 | 2. E-mail support@consent.studio
 |
@@ -282,9 +282,9 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 | https://consent.studio/docs/en.
 |
 | By using this GTM Template, you agree to the following:
-| - consent.studio Terms & Conditions (https://consent.studio/terms)
-| - consent.studio Privacy Policy (https://consent.studio/privacy)
-| - consent.studio Disclaimer (https://consent.studio/disclaimer)
+| - Consent Studio Terms & Conditions (https://consent.studio/terms)
+| - Consent Studio Privacy Policy (https://consent.studio/privacy)
+| - Consent Studio Disclaimer (https://consent.studio/disclaimer)
 |
 */
 

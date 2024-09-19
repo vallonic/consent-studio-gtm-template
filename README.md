@@ -1,8 +1,8 @@
-# consent.studio GTM Community Tag Template
-This is the repository of consent.studio's Google Tag Manager Community Tag Template.
+# Consent Studio GTM Community Tag Template
+This is the repository of Consent Studio's Google Tag Manager Community Tag Template.
 
-## What is consent.studio?
-consent.studio is an affordable consent management platform (CMP) developed by the Dutch web development studio [Vallonic](https://vallonic.com). Key features are a cookie scanner, a consent management banner, a hosted overview of cookies used on a specific website, Google Consent Mode v2 implementation, multilanguage, multiple websites under one account and, most importantly, the competitive pricing.
+## What is Consent Studio?
+Consent Studio is an affordable consent management platform (CMP) developed by the Dutch web development studio [Vallonic](https://vallonic.com). Key features are a cookie scanner, a consent management banner, a hosted overview of cookies used on a specific website, Google Consent Mode v2 implementation, multilanguage, multiple websites under one account and, most importantly, the competitive pricing.
 
 Website: https://consent.studio
 
@@ -13,10 +13,10 @@ Website: https://consent.studio
 * https://sportwereld-ruiven.nl
 * https://veiligheidshandschoenen.nl
 
-### What is the consent.studio roadmap?
-Currently, we — Vallonic — are co-creating consent.studio with our own clients and befriended agencies. As we have reached the stage where our beta has gone public, we now offer a Google Tag Manager Community Template as opposed to manually importing a `.tpl` file.
+### What is the Consent Studio roadmap?
+Currently, we — Vallonic — are co-creating Consent Studio with our own clients and befriended agencies. As we have reached the stage where our beta has gone public, we now offer a Google Tag Manager Community Template as opposed to manually importing a `.tpl` file.
 
-This is the roadmap for consent.studio:
+This is the roadmap for Consent Studio:
 
 - [x] Build and maintain a database of known cookies, in English
 - [x] Develop a scanner feature that checks websites periodically scans websites for cookies and matches them agains known cookies from our cookie database
@@ -40,5 +40,5 @@ Clients include Van Vulpen, Vereniging OMO, SOVOT, Danone, Naber Plastics and St
 ## Support
 ### Documentation
 Documentation is available on the following URL's:
-* 🇳🇱 (NL): https://vallonic.notion.site/consent-studio-ff0e7055c94841ce86b27d8bc0ac9593
-* 🇬🇧 (EN): https://vallonic.notion.site/consent-studio-f1749f7b6b1a406482f43634f81b2b5f
+* 🇬🇧 (EN): https://intercom.help/consent-studio
+* 🇳🇱 (NL): https://intercom.help/consent-studio/nl

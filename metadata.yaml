@@ -1,6 +1,9 @@
 homepage: "https://consent.studio"
 documentation: "https://intercom.help/consent-studio"
 versions:
+  # 12. Updated brand name
+  - sha: 98387969c0c57cf64daad1b9b9cce647c072ff65
+    changeNotes: Updated brand name — from "consent.studio" to "Consent Studio"
   # 11. Verified CMP optimizations
   - sha: 6e16f1e818fcfd9a9b548a0bfd095965efd38e05
     changeNotes: Re-introduced security_storage status and adjusted the default command

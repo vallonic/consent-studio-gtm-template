@@ -1,6 +1,9 @@
 homepage: "https://consent.studio"
 documentation: "https://intercom.help/consent-studio"
 versions:
+  # 13. Added icon
+  - sha: 621b759433d7897f5c418c01cced4fde17dce348
+    changeNotes: Added brand icon
   # 12. Updated brand name
   - sha: 98387969c0c57cf64daad1b9b9cce647c072ff65
     changeNotes: Updated brand name — from "consent.studio" to "Consent Studio"

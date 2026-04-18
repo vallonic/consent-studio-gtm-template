@@ -1,44 +1,36 @@
-# Consent Studio GTM Community Tag Template
-This is the repository of Consent Studio's Google Tag Manager Community Tag Template.
+# Consent Studio - Google Tag Manager Template
+The official Google Tag Manager Community Template for [Consent Studio](https://consent.studio), a sovereign European consent management platform (CMP).
 
 ## What is Consent Studio?
-Consent Studio is an affordable consent management platform (CMP) developed by the Dutch web development studio [Vallonic](https://vallonic.com). Key features are a cookie scanner, a consent management banner, a hosted overview of cookies used on a specific website, Google Consent Mode v2 implementation, multilanguage, multiple websites under one account and, most importantly, the competitive pricing.
+Consent Studio helps websites comply with the GDPR, ePrivacy Directive and other privacy regulations through three core products:
 
-Website: https://consent.studio
+### Web CMP
+A customizable, multilingual consent banner with full Google Consent Mode v2 support, including default signals, regional defaults, ads data redaction and URL passthrough. Includes a hosted cookie declaration page where visitors can review and update their preferences.
 
-### Examples:
-* https://vanvulpen.eu
-* https://vallonic.com
-* https://kindercampusdenbijstere.nl
-* https://sportwereld-ruiven.nl
-* https://veiligheidshandschoenen.nl
+### Monitoring
+Automatically scans your websites for cookies and matches them against a maintained database of known cookies. Configure different consent rules per geographic region and manage multiple websites under a single account.
 
-### What is the Consent Studio roadmap?
-Currently, we — Vallonic — are co-creating Consent Studio with our own clients and befriended agencies. As we have reached the stage where our beta has gone public, we now offer a Google Tag Manager Community Template as opposed to manually importing a `.tpl` file.
+### Launcher
+A consent-aware tag manager for loading third-party scripts based on visitor consent, without relying on Google Tag Manager for consent orchestration.
 
-This is the roadmap for Consent Studio:
+Website: [consent.studio](https://consent.studio)
 
-- [x] Build and maintain a database of known cookies, in English
-- [x] Develop a scanner feature that checks websites periodically scans websites for cookies and matches them agains known cookies from our cookie database
-- [x] Develop a cookie banner that can easily be added to a website and works with Google Consent Mode v2
-- [x] Develop a hosted overview of the cookies used on a website with the ability to update preferences
-- [x] Open up the application for existing customers of Vallonic and befriended agencies and partners
-- [x] Open up the application to the public
-- [x] Add the Tag Template to the Community Gallery of Google Tag Manager
-- [x] Translate the documentation from Dutch to English
-- [x] Design, develop and launch a product website
-- [x] The ability to translate all banner texts
-- [x] The ability to add a "reject all" button
-- [x] The ability to set-up different rules per geographic region
-- [ ] New, highly customizable banners
-- [ ] Digital accessible banners
+## What does this template do?
+This template integrates Consent Studio with Google Tag Manager. It:
 
-### Who are Vallonic?
-Vallonic designs, develops and maintains online experiences and software platforms for both enterprises as the Dutch educational landscape.
-Clients include Van Vulpen, Vereniging OMO, SOVOT, Danone, Naber Plastics and Stichting Mondiaen.
+1. Sets default Google Consent Mode v2 signals (including regional defaults)
+2. Reads the visitor's stored consent preferences
+3. Updates Google Consent Mode signals accordingly
+4. Loads the Consent Studio banner script
 
 ## Support
 ### Documentation
-Documentation is available on the following URL's:
-* 🇬🇧 (EN): https://intercom.help/consent-studio
-* 🇳🇱 (NL): https://intercom.help/consent-studio/nl
+- English: https://intercom.help/consent-studio
+- Nederlands: https://intercom.help/consent-studio/nl
+
+### Contact
+- Log in at [consent.studio](https://consent.studio/app) and use the live chat
+- Email: support@consent.studio
+
+## About
+Consent Studio is developed by [Vallonic B.V.](https://vallonic.com) from the Netherlands.

@@ -10,7 +10,7 @@ ___INFO___
 
 {
   "displayName": "Consent Studio CMP",
-  "description": "With Consent Studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR and CCPA. An account at https://consent.studio is required.",
+  "description": "With Consent Studio, you can easily collect consent for the use of cookies on your website in order to comply with the GDPR, CCPA and other privacy laws. An account at https://consent.studio is required.",
   "categories": [
     "TAG_MANAGEMENT",
     "PERSONALIZATION"
@@ -347,7 +347,7 @@ if(! isScanner && enableGoogleConsentMode)
     }
   }
   
-  if(data.regionSpecificDefaultConsent) 
+  if(data.consentModeDefaultRegionalSignals && data.consentModeDefaultRegionalSignals.length)
   {
     for(const region of data.consentModeDefaultRegionalSignals) 
     {
@@ -884,5 +884,4 @@ setup: ''
 ___NOTES___
 
 Created on 27/04/2024, 07:58:34
-
 

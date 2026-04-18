@@ -1,6 +1,9 @@
 homepage: "https://consent.studio"
 documentation: "https://intercom.help/consent-studio"
 versions:
+  # 14. Fixed regional default consent signals
+  - sha: 8882c4009a1f3ab97605d79b73d85fd2051fbdeb
+    changeNotes: Fixed regional default consent signals not being applied due to a non-existing guard variable
   # 13. Added icon
   - sha: 621b759433d7897f5c418c01cced4fde17dce348
     changeNotes: Added brand icon

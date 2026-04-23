@@ -1,6 +1,9 @@
 homepage: "https://consent.studio"
 documentation: "https://intercom.help/consent-studio"
 versions:
+  # 15. Fixed json
+  - sha: 46f8689a0a3cf393cf1b82a94e2aeb6da2935390
+    changenotes: Fixed regional default consent signals not being applied due to a non-existing guard variable
   # 14. Fixed regional default consent signals
   - sha: 8882c4009a1f3ab97605d79b73d85fd2051fbdeb
     changeNotes: Fixed regional default consent signals not being applied due to a non-existing guard variable

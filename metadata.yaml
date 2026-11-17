@@ -1,6 +1,9 @@
 homepage: "https://consent.studio"
 documentation: "https://intercom.help/consent-studio"
 versions:
+  # 16. Consent Studio domain field
+  - sha: 25285909ab74e2f327ccc4ab629f7e8dd941d7ae
+    changeNotes: Added an optional Consent Studio domain field, for your own pages at a booking or other platform
   # 15. Fixed json
   - sha: 46f8689a0a3cf393cf1b82a94e2aeb6da2935390
     changenotes: Fixed regional default consent signals not being applied due to a non-existing guard variable

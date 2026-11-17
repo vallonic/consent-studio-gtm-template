@@ -59,6 +59,13 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "consentStudioDomain",
+        "displayName": "Consent Studio domain (optional)",
+        "help": "Only for a container that also runs on your own pages at a booking or other platform. Fill in your domain as registered in Consent Studio, for example example.com. On pages outside that domain, this tag then loads your banner and reads your own consent. On your own domain nothing changes. Leave empty otherwise.",
+        "simpleValueType": true
       }
     ]
   },
@@ -299,6 +306,34 @@ const isScanner = getUrl('fragment') == 'cs-scan';
 const updateConsentState = require('updateConsentState');
 const gtagSet = require('gtagSet');
 const setInWindow = require('setInWindow');
+const makeString = require('makeString');
+
+/*
+ * Consent sharing (CONSENT-1993): on the customer's own page at a platform
+ * (say, their booking page on clinicminds.com), the page host is the
+ * platform's, so the banner and the consent must come from the domain filled
+ * in under "Consent Studio domain". There the banner keeps its consent in one
+ * JSON cookie of its own, consent-studio__site__<domain>, never in the
+ * platform's consent-studio__storage. Same normalisation as the server's
+ * Site::normalizeCdnDomain(); keep the two in step.
+ */
+function normalizeDomain(value) {
+  var domain = makeString(value || '').trim().toLowerCase();
+
+  if(domain.indexOf('https://') === 0) domain = domain.substring(8);
+  if(domain.indexOf('http://') === 0) domain = domain.substring(7);
+  while(domain.indexOf('.') === 0) domain = domain.substring(1);
+  if(domain.indexOf('www.') === 0) domain = domain.substring(4);
+  if(domain.indexOf('/') > -1) domain = domain.substring(0, domain.indexOf('/'));
+
+  return domain;
+}
+
+const siteDomain = normalizeDomain(data.consentStudioDomain);
+const pageHost = normalizeDomain(getUrl('host'));
+const onOwnDomain = pageHost === siteDomain
+  || (pageHost.length > siteDomain.length + 1 && pageHost.substring(pageHost.length - siteDomain.length - 1) === '.' + siteDomain);
+const onPlatformPage = siteDomain !== '' && ! onOwnDomain;
 
 if(isScanner) 
 {
@@ -329,10 +364,22 @@ if(! isScanner && enableGoogleConsentMode)
   var hasGivenConsentForAnalyticsCookies = null;
   var hasGivenConsentForMarketingCookies = null;
 
-  var consentString = getCookieValues("consent-studio__storage")[0] || null;
+  var consentString = null;
+
+  if(onPlatformPage)
+  {
+    var siteCookie = getCookieValues('consent-studio__site__' + siteDomain)[0];
+    var siteFields = siteCookie ? JSON.parse(siteCookie) : null;
+    consentString = siteFields && siteFields.storage ? JSON.stringify(siteFields.storage) : null;
+  }
+  else
+  {
+    consentString = getCookieValues("consent-studio__storage")[0] || null;
+  }
+
   var consent = JSON.parse(consentString ? consentString : '{}');
 
-  if(getCookieValues("consent-studio__storage")[0]) 
+  if(consentString)
   {
     hasGivenConsentForFunctionalCookies = false;
     hasGivenConsentForAnalyticsCookies = false;
@@ -390,7 +437,7 @@ if(! isScanner && enableGoogleConsentMode)
   }
 }
 
-injectScript('https://consent.studio/' + getUrl('host') + '/banner.js');
+injectScript('https://consent.studio/' + (onPlatformPage ? siteDomain : getUrl('host')) + '/banner.js');
 
 // Call data.gtmOnSuccess when completed
 data.gtmOnSuccess();
@@ -766,6 +813,10 @@ ___WEB_PERMISSIONS___
               {
                 "type": 1,
                 "string": "consent-studio__storage"
+              },
+              {
+                "type": 1,
+                "string": "consent-studio__site__*"
               }
             ]
           }
